@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Team & Affiliate</title>
+    <style>
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: #f4f7f6; margin: 0; padding: 20px; text-align: center; }
+        .container { max-width: 600px; margin: auto; background: white; padding: 20px; border-radius: 15px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); }
+        
+        /* Phần hình ảnh nhân viên */
+        .team-section { display: flex; overflow-x: auto; gap: 15px; padding: 10px; margin-bottom: 30px; }
+        .member-card { min-width: 120px; }
+        .member-card img { width: 80px; height: 80px; border-radius: 50%; object-fit: cover; border: 2px solid #0056b3; }
+        .member-card p { font-size: 14px; margin-top: 5px; color: #333; }
+
+        /* Phần Affiliate */
+        .converter-box { background: #e9ecef; padding: 15px; border-radius: 10px; margin-bottom: 20px; }
+        input { width: 80%; padding: 10px; border: 1px solid #ddd; border-radius: 5px; margin-bottom: 10px; }
+        button { background: #28a745; color: white; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer; }
+        button:hover { background: #218838; }
+
+        .aff-links a { display: block; background: #0056b3; color: white; text-decoration: none; padding: 15px; margin: 10px 0; border-radius: 8px; transition: 0.3s; }
+        .aff-links a:hover { background: #004494; transform: scale(1.02); }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2>Chào mừng bạn đến với Team của Thọ!</h2>
+    
+    <div class="team-section">
+        <div class="member-card">
+            <img src="https://via.placeholder.com/80" alt="Nhân viên 1">
+            <p>Admin Giang</p>
+        </div>
+        <div class="member-card">
+            <img src="https://via.placeholder.com/80" alt="Nhân viên 2">
+            <p>Lead Huệ</p>
+        </div>
+        </div>
+
+    <hr>
+
+    <div class="converter-box">
+        <h4>Chuyển đổi Link Mua Hàng</h4>
+        <input type="text" id="rawLink" placeholder="Dán link sản phẩm vào đây...">
+        <br>
+        <button onclick="convertLink()">Lấy Link Affiliate</button>
+        <p id="result" style="margin-top: 10px; font-weight: bold; color: #d9534f;"></p>
+    </div>
+
+    <div class="aff-links">
+        <h4>Sản phẩm khuyên dùng</h4>
+        <a href="https://shope.ee/your-id-1" target="_blank">🛒 Máy tính X99 Cấu Hình Khủng</a>
+        <a href="https://shope.ee/your-id-2" target="_blank">🎧 Tai nghe Kiểm âm DJ</a>
+        <a href="https://shope.ee/your-id-3" target="_blank">📦 Phụ kiện iPad Mini 7</a>
+    </div>
+</div>
+
+<script>
+    function convertLink() {
+        const link = document.getElementById('rawLink').value;
+        const subId = "tho_affiliate"; // Bạn có thể thay đổi sub-id theo ý muốn
+        if(link) {
+            // Đây là logic giả định, bạn có thể thay bằng API Shopee/TikTok nếu có
+            const converted = link + "?sp_atk=" + subId; 
+            document.getElementById('result').innerHTML = `Link của bạn: <a href="${converted}" target="_blank">Bấm vào đây</a>`;
+        } else {
+            alert("Vui lòng dán link!");
+        }
+    }
+</script>
+
+</body>
+</html>
