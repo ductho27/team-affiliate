@@ -168,32 +168,48 @@
 
 <script>
     // Giữ nguyên logic JavaScript cũ của Thọ
-    async function convertLink() {
-        const userLink = document.getElementById('rawLink').value;
-        const resDiv = document.getElementById('result');
-        const myApiUrl = "https://5a6b-2001-ee0-4141-611d-6406-3e56-ace5-639a.ngrok-free.app/convert"; 
+async function convertLink() {
+    const userLink = document.getElementById('rawLink').value.trim();
+    const resDiv = document.getElementById('result');
+    const myApiUrl = "https://YOUR-NGROK-LINK.ngrok-free.app/convert"; // Thay link ngrok của Thọ
 
-        if(!userLink) {
-            resDiv.innerText = "Vui lòng dán link trước!";
-            return;
-        }
-
-        resDiv.style.color = "#0056b3";
-        resDiv.innerText = "Đang điều khiển Bot... chờ xíu nhé!";
-
-        try {
-            const response = await fetch(myApiUrl, {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ link: userLink })
-            });
-            const data = await response.json();
-            resDiv.innerHTML = `Xong rồi! <a href="${data.affiliate_link}" target="_blank" style="color: #28a745; text-decoration: underline;">Bấm để mở Link</a>`;
-        } catch (err) {
-            resDiv.style.color = "#d9534f";
-            resDiv.innerText = "Lỗi kết nối! Thọ kiểm tra lại Ngrok nhé.";
-        }
+    // 1. Kiểm tra link trống
+    if(!userLink) {
+        resDiv.style.color = "#d9534f";
+        resDiv.innerText = "⚠️ Thọ ơi, vui lòng dán link đã nhé!";
+        return;
     }
+
+    // 2. KIỂM TRA LINK CHÍNH QUY (Chỉ cho phép shopee.vn hoặc shope.ee)
+    const shopeeRegex = /shopee\.vn|shope\.ee/;
+    if (!shopeeRegex.test(userLink)) {
+        resDiv.style.color = "#d9534f";
+        resDiv.innerText = "❌ Link này không phải của Shopee rồi Thọ ơi!";
+        return;
+    }
+
+    resDiv.style.color = "#0056b3";
+    resDiv.innerText = "🔍 Đang xử lý... Thọ đợi xíu nhé!";
+
+    try {
+        const response = await fetch(myApiUrl, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ link: userLink })
+        });
+        const data = await response.json();
+        
+        if (data.error) {
+            resDiv.style.color = "#d9534f";
+            resDiv.innerText = "⚠️ Shopee báo lỗi link này, Thọ kiểm tra lại nhé.";
+        } else {
+            resDiv.innerHTML = `✅ Xong! <a href="${data.affiliate_link}" target="_blank" style="color: #28a745; font-weight: bold;">Mở Link Affiliate</a>`;
+        }
+    } catch (err) {
+        resDiv.style.color = "#d9534f";
+        resDiv.innerText = "🚫 Bot đang nghỉ ngơi hoặc Ngrok hết hạn rồi!";
+    }
+}
 </script>
 </body>
 </html>
