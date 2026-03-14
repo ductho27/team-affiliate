@@ -402,3 +402,57 @@ a[target="_blank"]:hover {
     transform: translateX(5px); /* Hơi nhích sang phải một chút cho sinh động */
     box-shadow: 0 4px 10px rgba(163, 108, 243, 0.2);
 }
+
+.shopee-banner-container {
+    width: 100%;
+    margin-bottom: 25px;
+}
+
+.shopee-banner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: linear-gradient(135deg, #a36cf3 0%, #ff4d2d 100%); /* Tím pha Cam Shopee cho rực rỡ */
+    color: white;
+    text-decoration: none;
+    padding: 20px;
+    border-radius: 20px; /* Bo tròn cực mạnh */
+    box-shadow: 0 8px 20px rgba(163, 108, 243, 0.3);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.shopee-banner:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 25px rgba(163, 108, 243, 0.4);
+}
+
+.banner-tag {
+    background: rgba(255, 255, 255, 0.2);
+    padding: 4px 10px;
+    border-radius: 50px;
+    font-size: 0.75rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.banner-content h3 {
+    margin: 8px 0 5px 0;
+    font-size: 1.4rem;
+}
+
+.banner-content p {
+    margin: 0;
+    font-size: 0.9rem;
+    opacity: 0.9;
+}
+
+.banner-action {
+    background: white;
+    color: #ff4d2d;
+    padding: 10px 20px;
+    border-radius: 50px;
+    font-weight: bold;
+    font-size: 0.9rem;
+    white-space: nowrap;
+}
