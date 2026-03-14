@@ -55,8 +55,19 @@ async function convertLink() {
             body: JSON.stringify({ link: userLink })
         });
         const data = await response.json();
+
         if (data.affiliate_link) {
             resDiv.innerHTML = `✅ Xong! <a href="${data.affiliate_link}" target="_blank" style="color: var(--success-color); text-decoration: underline;">Mở Link Affiliate</a>`;
+            
+            // --- KHU VỰC BẮN PHÁO HOA ---
+            confetti({
+                particleCount: 150,
+                spread: 70,
+                origin: { y: 0.6 },
+                colors: ['#0056b3', '#28a745', '#ffeb3b', '#ff5722']
+            });
+            // ---------------------------
+
         } else { 
             resDiv.style.color = "var(--danger-color)";
             resDiv.innerText = "❌ Lỗi: " + (data.error || "Thử lại sau"); 
