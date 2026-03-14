@@ -27,7 +27,15 @@
         <button class="btn btn-login" onclick="handleLogin()">VÀO HỆ THỐNG</button>
         <p id="login-msg" style="color: red; margin-top: 10px; font-weight: bold;"></p>
     </div>
-
+    <div class="fortune-box">
+        <h3>🔮 Thầy Thọ Bói Vui</h3>
+        <p style="font-size: 0.8rem; margin-bottom: 10px;">Nhập tên và câu hỏi (ví dụ: Tài lộc tháng này thế nào?) để thầy giải quẻ!</p>
+        <input type="text" id="fortuneQuestion" class="fortune-input" placeholder="Họ tên và điều muốn hỏi...">
+        <button class="btn btn-fortune" onclick="askMasterTho()">XEM QUẺ NGAY</button>
+    
+        <div class="loading-spinner" id="fortune-loading"></div>
+        <div id="fortune-result"></div>
+    </div>
     <div id="main-content">
         <h2 id="welcome-msg">Chào mừng bạn!</h2>
 
