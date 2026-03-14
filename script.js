@@ -72,3 +72,53 @@ window.onload = () => {
     const savedName = localStorage.getItem('userName');
     if (savedName) showMainContent(savedName);
 }
+// Bói vui
+async function askMasterTho() {
+    const question = document.getElementById('fortuneQuestion').value.trim();
+    const resultDiv = document.getElementById('fortune-result');
+    const loading = document.getElementById('fortune-loading');
+    
+    if (!question) {
+        alert("Thầy Thọ chưa thấy thông tin, làm sao thầy bói được!");
+        return;
+    }
+
+    // Hiển thị trạng thái đang chờ
+    resultDiv.style.display = 'none';
+    loading.style.display = 'block';
+
+    const apiKey = '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'; // Thay KEY của bạn vào đây
+
+    try {
+        const response = await fetch('https://api.openai.com/v1/chat/completions', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${apiKey}`
+            },
+            body: JSON.stringify({
+                model: "gpt-3.5-turbo", // Hoặc gpt-4 nếu bạn đã nạp nhiều phí
+                messages: [{
+                    role: "system",
+                    content: "Bạn là 'Thầy Thọ', một chuyên gia bói toán vui vẻ, hài hước, thường xuyên khuyên mọi người đi mua sắm trên Shopee để giải vận đen. Hãy trả lời ngắn gọn, phong cách kiếm hiệp hoặc dân gian Việt Nam."
+                }, {
+                    role: "user",
+                    content: question
+                }],
+                max_tokens: 200
+            })
+        });
+
+        const data = await response.json();
+        const answer = data.choices[0].message.content;
+
+        loading.style.display = 'none';
+        resultDiv.innerText = "Thầy Thọ phán: " + answer;
+        resultDiv.style.display = 'block';
+
+    } catch (error) {
+        loading.style.display = 'none';
+        alert("Thầy Thọ đang đi vắng (Lỗi API), Thọ kiểm tra lại nhé!");
+        console.error(error);
+    }
+}
