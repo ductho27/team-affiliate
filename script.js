@@ -63,7 +63,7 @@ async function convertLink() {
                     
                     <a href="${data.affiliate_link}" target="_blank" class="buy-now-btn">
                         <span class="sticker">🔥</span> 
-                        MUA NGAY - SỐ LƯỢNG CÓ HẠN! 
+                        ẤN MUA NGAY TẠI ĐÂY ĐỂ HOÀN TIỀN!👈
                         <span class="sticker">🛒</span>
                     </a>
 
