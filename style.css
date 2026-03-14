@@ -329,3 +329,45 @@ hr {
     transform: rotate(360deg) scale(1.1);
     transition: 0.5s;
 }
+
+/* Nút Mua Ngay Thúc Giục */
+.buy-now-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    margin: 20px auto;
+    padding: 18px 35px;
+    background: linear-gradient(45deg, #ff4757, #ff6b81);
+    color: white !important;
+    text-decoration: none;
+    border-radius: 50px;
+    font-weight: 800;
+    font-size: 1.2rem;
+    box-shadow: 0 4px 15px rgba(255, 71, 87, 0.4);
+    transition: 0.3s;
+    /* Hiệu ứng nhấp nháy liên tục */
+    animation: urgent-blink 0.8s infinite alternate;
+}
+
+.buy-now-btn:hover {
+    transform: scale(1.1) rotate(-2deg);
+    filter: brightness(1.2);
+}
+
+.sticker {
+    font-size: 1.5rem;
+}
+
+/* Hiệu ứng nháy đỏ rực như đèn cảnh báo */
+@keyframes urgent-blink {
+    from {
+        background: #ff4757;
+        box-shadow: 0 0 10px #ff4757;
+    }
+    to {
+        background: #ff1f1f;
+        box-shadow: 0 0 25px #ff1f1f;
+        transform: scale(1.03);
+    }
+}
