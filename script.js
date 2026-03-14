@@ -1,28 +1,5 @@
 // --- ĐỊA CHỈ NGROK ---
 const BASE_URL = "https://eaa8-2001-ee0-4141-611d-f998-7707-f08c-c584.ngrok-free.app"; 
-async function handleLogin() {
-    const staffIdInput = document.getElementById('staffIdInput');
-    const msg = document.getElementById('login-msg');
-    
-    if (!staffIdInput) return;
-    const staffId = staffIdInput.value.trim().toUpperCase();
-    
-    if (!staffId) return msg.innerText = "⚠️ Nhập mã nhân viên bạn iu ơi!";
-
-    try {
-        const response = await fetch('employees.json');
-        const userList = await response.json();
-        if (userList[staffId]) {
-            localStorage.setItem('userName', userList[staffId]);
-            localStorage.setItem('staffId', staffId);
-            showMainContent(userList[staffId]);
-        } else {
-            msg.innerText = "❌ Mã không tồn tại!";
-        }
-    } catch (err) { 
-        msg.innerText = "⚠️ Lỗi: Kiểm tra file employees.json!"; 
-    }
-}
 
 function showMainContent(name) {
     const loginScreen = document.getElementById('login-screen');
@@ -39,11 +16,10 @@ function handleLogout() {
     location.reload(); 
 }
 
-// Chạy khi trang web vừa load xong
+// Khi trang web load xong, không cần check gì cả, cứ để người dùng dùng luôn
 window.onload = () => {
-    const savedName = localStorage.getItem('userName');
-    if (savedName) showMainContent(savedName);
-}
+    console.log("Văn phòng Thầy Thọ đã sẵn sàng!");
+};
 
 // --- 2. TÍNH NĂNG 1: CHUYỂN LINK ---
 async function convertLink() {
