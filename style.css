@@ -160,3 +160,32 @@ hr {
     border-top: 1px solid #eee;
     margin: 15px 0;
 }
+
+/* Nút Zalo liên hệ */
+.zalo-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin: 15px auto 0;
+    padding: 12px;
+    background: #0084ff; /* Màu xanh Zalo */
+    color: white !important;
+    text-decoration: none;
+    border-radius: 50px;
+    font-weight: bold;
+    width: fit-content;
+    min-width: 200px;
+    transition: 0.3s;
+}
+
+.zalo-btn img {
+    width: 25px;
+    height: 25px;
+}
+
+.zalo-btn:hover {
+    background: #006edb;
+    transform: scale(1.05);
+    box-shadow: 0 5px 15px rgba(0,132,255,0.3);
+}
