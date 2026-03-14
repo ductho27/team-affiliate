@@ -40,7 +40,9 @@
 
         <div class="fortune-box">
             <h4 style="color: var(--purple-tho);">🔮 Thầy Thọ Phán Quẻ</h4>
-            <input type="text" id="fortuneQuestion" placeholder="Hỏi thầy: Muốn bói chính xác thì cho thầy họ tên đầy đủ, ngày tháng năm sinh và câu hỏi của con thì với bói chuẩn được">
+            <textarea id="fortuneQuestion" 
+          placeholder="Hỏi thầy: Muốn bói chính xác thì cho thầy họ tên đầy đủ, ngày tháng năm sinh và câu hỏi của con thì thầy mới bói chuẩn được"
+          rows="3"></textarea>
             <button class="btn-fortune" onclick="askMasterTho()">Xem Quẻ Ngay</button>
             <div id="fortune-result"></div>
         </div>
