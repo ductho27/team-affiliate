@@ -1,0 +1,74 @@
+:root {
+    --primary-color: #0056b3;
+    --success-color: #28a745;
+    --bg-color: #f4f7f6;
+    --danger-color: #d9534f;
+    --shopee-orange: #ee4d2d;
+    --zalo-blue: #008fe5;
+}
+
+body { 
+    font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; 
+    background-color: var(--bg-color); 
+    margin: 0; padding: 10px; color: #333;
+}
+
+.container { 
+    max-width: 500px; margin: 20px auto; 
+    background: white; padding: 25px; 
+    border-radius: 20px; 
+    box-shadow: 0 10px 30px rgba(0,0,0,0.08); 
+    text-align: center;
+}
+
+h2 { color: var(--shopee-orange); margin-bottom: 20px; }
+
+/* Các hộp chức năng */
+.converter-box { 
+    background: #fff5f1; padding: 20px; 
+    border-radius: 20px; border: 2px dashed var(--shopee-orange);
+    margin: 20px 0;
+}
+
+input { 
+    width: 100%; box-sizing: border-box;
+    padding: 14px; border: 1px solid #ddd; 
+    border-radius: 12px; margin-bottom: 15px; font-size: 16px; 
+}
+
+/* Nút bấm */
+.btn { 
+    width: 100%; border: none; padding: 16px; 
+    border-radius: 12px; cursor: pointer; 
+    font-size: 16px; font-weight: bold; transition: 0.3s;
+}
+
+.btn-login { background: var(--primary-color); color: white; }
+.btn-convert { background: var(--shopee-orange); color: white; }
+.btn-logout { background: #6c757d; color: white; margin-top: 20px; font-size: 14px; }
+
+/* Hiệu ứng rung rinh cho nút Zalo */
+@keyframes shake-zalo {
+    0% { transform: translateX(0); }
+    10%, 30%, 50%, 70%, 90% { transform: translateX(-2px); }
+    20%, 40%, 60%, 80% { transform: translateX(2px); }
+    100% { transform: translateX(0); }
+}
+
+.shake-animation {
+    animation: shake-zalo 2s cubic-bezier(.36,.07,.19,.97) infinite;
+    display: flex; align-items: center; justify-content: center; 
+    background: var(--zalo-blue); color: white; 
+    text-decoration: none; padding: 12px; 
+    border-radius: 12px; font-weight: bold; gap: 10px;
+}
+
+.buy-now-btn {
+    display: inline-block; width: 100%; box-sizing: border-box;
+    background: var(--success-color); color: white;
+    text-decoration: none; padding: 16px;
+    border-radius: 12px; font-weight: bold;
+    font-size: 1.1rem; margin-top: 10px;
+}
+
+#main-content, #result-box { display: none; }
