@@ -3,12 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Team Đức Thọ & Affiliate</title>
+    <title>Hệ Thống Mua Sắm - Team Thọ</title>
 
     <script type="text/javascript">
-        var _atsmarttag = {
-            pub_id: '5318594335759026755' // ID chuẩn của Thọ
-        };
+        var _atsmarttag = { pub_id: '5318594335759026755' };
         (function () {
             var script = document.createElement('script');
             script.src = '//static.accesstrade.vn/js/v2/atsmarttag.min.js?v=1.1.0';
@@ -17,208 +15,131 @@
             (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(script);
         })();
     </script>
+
     <style>
         :root {
-            --primary-color: #0056b3;
-            --success-color: #28a745;
-            --bg-color: #f4f7f6;
-            --danger-color: #d9534f;
             --shopee-orange: #ee4d2d;
+            --shopee-light: #ff5722;
+            --bg-gradient: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
         }
 
         body { 
-            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; 
-            background-color: var(--bg-color); 
-            margin: 0; padding: 10px; color: #333;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+            background: var(--bg-gradient);
+            min-height: 100vh;
+            margin: 0; padding: 20px;
+            display: flex; justify-content: center;
         }
 
         .container { 
-            max-width: 600px; margin: 20px auto; 
-            background: white; padding: 25px; 
-            border-radius: 20px; 
-            box-shadow: 0 10px 30px rgba(0,0,0,0.08); 
+            max-width: 500px; width: 100%;
+            background: white; padding: 30px; 
+            border-radius: 25px; 
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+            text-align: center;
         }
 
-        h2 { color: var(--primary-color); font-size: 1.5rem; margin-bottom: 20px; text-align: center; }
-        h4 { margin-bottom: 15px; color: #555; border-left: 4px solid var(--shopee-orange); padding-left: 10px; }
-
-        #main-content { display: none; }
-
-        .team-section { 
-            display: flex; justify-content: center; gap: 20px; 
-            padding: 10px 0; margin-bottom: 20px; overflow-x: auto;
-        }
-
-        .member-card { text-align: center; }
-        .member-card img { 
-            width: 70px; height: 70px; border-radius: 50%; 
-            object-fit: cover; border: 3px solid #eef2f7;
-        }
+        h2 { color: var(--shopee-orange); margin-bottom: 5px; }
+        .subtitle { color: #666; font-size: 0.9rem; margin-bottom: 25px; }
 
         .converter-box { 
-            background: #f8f9fa; padding: 20px; 
-            border-radius: 15px; margin-bottom: 20px; border: 1px solid #eee;
+            background: #fff5f1; padding: 20px; 
+            border-radius: 20px; border: 2px dashed var(--shopee-orange);
+            margin-bottom: 20px;
         }
 
         input { 
             width: 100%; box-sizing: border-box;
-            padding: 12px 15px; border: 2px solid #ddd; 
-            border-radius: 10px; margin-bottom: 15px; font-size: 16px; 
+            padding: 15px; border: 1px solid #ddd; 
+            border-radius: 12px; margin-bottom: 15px; 
+            font-size: 15px; outline: none;
         }
 
-        button { 
+        input:focus { border-color: var(--shopee-orange); box-shadow: 0 0 8px rgba(238, 77, 45, 0.2); }
+
+        .btn-convert { 
             width: 100%; background: var(--shopee-orange); 
-            color: white; border: none; padding: 14px; 
-            border-radius: 10px; cursor: pointer; 
-            font-size: 16px; font-weight: bold; transition: 0.3s;
+            color: white; border: none; padding: 16px; 
+            border-radius: 12px; cursor: pointer; 
+            font-size: 17px; font-weight: bold;
+            box-shadow: 0 4px 15px rgba(238, 77, 45, 0.3);
+            transition: all 0.3s ease;
         }
 
-        button:hover { opacity: 0.9; transform: translateY(-2px); }
-
-        .btn-logout { background: #6c757d; margin-top: 15px; padding: 10px; font-size: 14px; }
+        .btn-convert:hover { background: var(--shopee-light); transform: translateY(-2px); }
 
         #result-box {
-            margin-top: 15px; padding: 15px; border-radius: 10px;
-            display: none; word-break: break-all;
+            display: none; margin-top: 25px; padding: 20px;
+            background: #e8f5e9; border-radius: 15px;
+            animation: fadeIn 0.5s ease;
         }
 
-        .aff-links a { 
-            display: flex; align-items: center; justify-content: center;
-            background: white; color: var(--primary-color); 
-            text-decoration: none; padding: 15px; margin: 12px 0; 
-            border-radius: 12px; border: 1px solid #e0e6ed; font-weight: 600;
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+
+        .cta-text { color: #2e7d32; font-weight: bold; font-size: 1.1rem; margin-bottom: 10px; }
+
+        .buy-now-btn {
+            display: inline-block; width: 100%;
+            background: #28a745; color: white;
+            text-decoration: none; padding: 15px;
+            border-radius: 12px; font-weight: bold;
+            font-size: 1.2rem; margin-top: 10px;
+            box-shadow: 0 4px 12px rgba(40, 167, 69, 0.3);
         }
+
+        .buy-now-btn:blink { animation: blinker 1.5s linear infinite; }
+        @keyframes blinker { 50% { opacity: 0.8; } }
+
+        .footer-note { font-size: 0.8rem; color: #999; margin-top: 20px; }
     </style>
 </head>
 <body>
 
 <div class="container">
-    <div id="login-screen">
-        <h2>Đăng nhập Hệ thống</h2>
-        <div class="converter-box">
-            <input type="text" id="staffIdInput" placeholder="Nhập mã nhân viên (VD: V001)...">
-            <button onclick="handleLogin()">Vào Hệ Thống</button>
-            <p id="login-msg" style="color: var(--danger-color); margin-top: 10px; font-weight: bold; text-align: center;"></p>
-        </div>
+    <h2>🛍️ Shopping Team Thọ</h2>
+    <p class="subtitle">Dán link Shopee để ủng hộ hoa hồng cho Team nhé!</p>
+
+    <div class="converter-box">
+        <input type="text" id="rawLink" placeholder="Dán link sản phẩm Shopee tại đây...">
+        <button class="btn-convert" onclick="generateLink()">TẠO LINK MUA HÀNG</button>
     </div>
 
-    <div id="main-content">
-        <h2 id="welcome-msg">Chào mừng bạn!</h2>
+    <div id="result-box">
+        <div class="cta-text">🎉 Đã tạo link thành công!</div>
+        <p style="font-size: 0.9rem; color: #444;">Bạn hãy ấn vào nút bên dưới để bắt đầu mua sắm và ủng hộ hoa hồng cho mình nhé:</p>
         
-        <div class="team-section">
-            <div class="member-card">
-                <img src="https://via.placeholder.com/70" alt="Duc Tho"><p>Duc Tho</p>
-            </div>
-            <div class="member-card">
-                <img src="https://via.placeholder.com/70" alt="Bảnh Bỏn"><p>Bảnh Bỏn</p>
-            </div>
-        </div>
-
-        <div class="converter-box">
-            <h4>Chuyển đổi Link Shopee</h4>
-            <input type="text" id="rawLink" placeholder="Dán link Shopee (shopee.vn/...)">
-            <button onclick="convertLink()">Lấy Link Kiếm Tiền</button>
-            
-            <div id="result-box">
-                <p id="status-msg"></p>
-                <div id="final-link-area"></div>
-            </div>
-        </div>
-
-        <div class="aff-links">
-            <h4>Sản phẩm khuyên dùng</h4>
-            <a href="https://shopee.vn/search?keyword=x99" target="_blank">🛒 Máy tính X99 Cấu Hình Khủng</a>
-            <a href="https://shopee.vn/search?keyword=tai+nghe+dj" target="_blank">🎧 Tai nghe Kiểm âm DJ</a>
-        </div>
-
-        <button class="btn-logout" onclick="handleLogout()">Đăng xuất</button>
+        <a href="#" id="finalLink" target="_blank" class="buy-now-btn">
+             🚀 ẤN VÀO MUA NGAY 🛒
+        </a>
+        
+        <p style="margin-top: 15px; font-size: 0.8rem; color: #666;">(Sau khi ấn, hệ thống sẽ tự chuyển hướng đến Shopee)</p>
     </div>
+
+    <p class="footer-note">Cảm ơn bạn đã đồng hành cùng Đức Thọ!</p>
 </div>
 
 <script>
-    // --- 1. LOGIC ĐĂNG NHẬP ---
-    async function handleLogin() {
-        const staffId = document.getElementById('staffIdInput').value.trim().toUpperCase();
-        const msg = document.getElementById('login-msg');
-
-        if (!staffId) {
-            msg.innerText = "⚠️ Vui lòng nhập mã nhân viên!";
-            return;
-        }
-
-        try {
-            // Giả lập hoặc fetch từ GitHub của Thọ
-            const response = await fetch('employees.json');
-            if (!response.ok) throw new Error("Lỗi tải danh sách");
-            
-            const userList = await response.json();
-
-            if (userList[staffId]) {
-                const userName = userList[staffId];
-                localStorage.setItem('userName', userName);
-                localStorage.setItem('staffId', staffId);
-                showMainContent(userName);
-            } else {
-                msg.innerText = "❌ Mã nhân viên không tồn tại!";
-            }
-        } catch (err) {
-            msg.innerText = "⚠️ Lỗi: Không tìm thấy file employees.json!";
-        }
-    }
-
-    function showMainContent(name) {
-        document.getElementById('login-screen').style.display = 'none';
-        document.getElementById('main-content').style.display = 'block';
-        document.getElementById('welcome-msg').innerText = `Chào bạn, ${name}! 👋`;
-    }
-
-    function handleLogout() {
-        localStorage.clear();
-        location.reload();
-    }
-
-    window.onload = () => {
-        const savedName = localStorage.getItem('userName');
-        if (savedName) showMainContent(savedName);
-    }
-
-    // --- 2. LOGIC LẤY LINK (Kết hợp SmartTag + SubID) ---
-    function convertLink() {
+    function generateLink() {
         const userLink = document.getElementById('rawLink').value.trim();
         const resultBox = document.getElementById('result-box');
-        const statusMsg = document.getElementById('status-msg');
-        const linkArea = document.getElementById('final-link-area');
-        const staffId = localStorage.getItem('staffId') || "GUEST"; 
+        const finalLink = document.getElementById('finalLink');
 
-        if(!userLink) {
-            alert("Thọ ơi, dán link vào đã!");
+        if(!userLink || !userLink.includes('shopee.vn') && !userLink.includes('shope.ee')) {
+            alert("Thọ ơi, dán đúng link Shopee mới được nhé!");
             return;
         }
 
-        const shopeeRegex = /shopee\.vn|shope\.ee/;
-        if (!shopeeRegex.test(userLink)) {
-            alert("Đây không phải link Shopee Thọ ơi!");
-            return;
-        }
+        // Gắn thêm utm_source để Thọ dễ theo dõi trên AccessTrade
+        const cleanLink = userLink.split('?')[0]; // Lấy link sạch
+        const affLink = `${cleanLink}?utm_source=ban_be_ung_ho`;
 
-        // BƯỚC QUAN TRỌNG: Gắn staffId vào link gốc dưới dạng UTM để SmartTag ghi nhận
-        let separator = userLink.includes('?') ? '&' : '?';
-        let customLink = `${userLink}${separator}utm_content=${staffId}&utm_source=ThoTeam`;
-
-        // Hiển thị kết quả
+        finalLink.href = affLink;
         resultBox.style.display = "block";
-        resultBox.style.backgroundColor = "#e8f5e9";
-        statusMsg.style.color = "var(--success-color)";
-        statusMsg.innerHTML = "<b>✅ Đã gắn mã cá nhân!</b>";
         
-        // SmartTag sẽ tự động chuyển đổi link này khi khách click vào
-        linkArea.innerHTML = `
-            <p style='font-size: 13px; color: #666;'>Gửi link này cho khách, hoa hồng sẽ tính cho <b>${staffId}</b>:</p>
-            <a href="${customLink}" target="_blank" style="color: var(--primary-color); font-weight: bold; text-decoration: underline;">
-                ${customLink.substring(0, 50)}...
-            </a>
-        `;
+        // Cuộn xuống kết quả
+        resultBox.scrollIntoView({ behavior: 'smooth' });
     }
 </script>
+
 </body>
 </html>
