@@ -59,18 +59,21 @@ async function convertLink() {
         if (data.affiliate_link) {
             resDiv.innerHTML = `
                 <div class="success-box">
-                    <p style="color: var(--success-color); font-size: 1.2rem;">✅ Chuyển đổi thành công!</p>
-        
+                    <p style="color: var(--success-color); font-size: 1.2rem; font-weight: bold;">✅ Chuyển đổi thành công!</p>
+                    
                     <a href="${data.affiliate_link}" target="_blank" class="buy-now-btn">
-                        <span class="sticker">🛒</span> MUA NGAY - ĐỪNG BỎ LỠ!
+                        <span class="sticker">🔥</span> 
+                        MUA NGAY - SỐ LƯỢNG CÓ HẠN! 
+                        <span class="sticker">🛒</span>
                     </a>
-        
+
                     <hr>
                     <div class="commission-info">
                         💰 <b>Hoa hồng của bạn:</b> 4.5% - 15%<br>
-                        <span>Nhấn vào nút trên để nhận thưởng!</span>
+                        <span>Nhấn vào biểu tượng Zalo để nhận thưởng!</span>
                     </div>
-                    <a href="https://zalo.me/SỐ_ĐIỆN_THOẠI" target="_blank" class="zalo-container">
+                    
+                    <a href="https://zalo.me/0328982137" target="_blank" class="zalo-container">
                         <div class="zalo-icon-wrapper">
                             <img src="https://upload.wikimedia.org/wikipedia/commons/9/91/Icon_of_Zalo.svg" alt="Zalo">
                         </div>
