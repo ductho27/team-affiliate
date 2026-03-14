@@ -1,1 +1,59 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Team Đức Thọ & Affiliate</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
 
+<div class="container">
+    <div id="login-screen">
+        <h2>Đăng nhập Hệ thống</h2>
+        <div class="converter-box">
+            <input type="text" id="staffIdInput" placeholder="Nhập mã nhân viên (V001, V002...)">
+            <button onclick="handleLogin()">Vào Hệ Thống</button>
+            <p id="login-msg" class="error-text"></p>
+        </div>
+    </div>
+
+    <div id="main-content">
+        <h2 id="welcome-msg">Chào mừng bạn!</h2>
+        
+        <div class="team-section">
+            <div class="member-card">
+                <img src="images.jpg" alt="Duc Tho"><p>Duc Tho</p>
+            </div>
+            <div class="member-card">
+                <img src="admin2.jpg" alt="Bảnh Bỏn"><p>Bảnh Bỏn</p>
+            </div>
+        </div>
+
+        <div class="converter-box">
+            <h4>🛒 Chuyển đổi Link Shopee</h4>
+            <input type="text" id="rawLink" placeholder="Dán link sản phẩm Shopee...">
+            <button onclick="convertLink()">Lấy Link Affiliate</button>
+            <div id="result"></div>
+        </div>
+
+        <div class="fortune-box">
+            <h4 style="color: var(--purple-tho);">🔮 Thầy Thọ Phán Quẻ</h4>
+            <input type="text" id="fortuneQuestion" placeholder="Hỏi thầy: Bao giờ lấy chồng? Giàu không?">
+            <button class="btn-fortune" onclick="askMasterTho()">Xem Quẻ Ngay</button>
+            <div id="fortune-result"></div>
+        </div>
+
+        <div class="aff-links">
+            <h4>Sản phẩm khuyên dùng</h4>
+            <a href="#" target="_blank">💻 Máy tính X99 Cấu Hình Khủng</a>
+            <a href="#" target="_blank">🎧 Tai nghe Kiểm âm DJ</a>
+        </div>
+
+        <button class="btn-logout" onclick="handleLogout()">Đăng xuất</button>
+    </div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
