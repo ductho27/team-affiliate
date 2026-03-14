@@ -303,3 +303,19 @@ button:disabled {
     50% { opacity: 0.7; }
     100% { opacity: 1; }
 }
+/* Tạo một container trung tâm để gom nội dung */
+.container {
+    max-width: 800px; /* Độ rộng lý tưởng để không bị bè */
+    margin: 20px auto; /* Căn giữa và tạo khoảng cách trên dưới */
+    padding: 20px;
+    background: #fdfaff; /* Màu nền nhẹ nhàng cho văn phòng Thầy Thọ */
+    border-radius: 20px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+}
+
+/* Chỉnh lại các khu vực con cho gọn gàng */
+.section-box {
+    margin-bottom: 25px;
+    padding: 15px;
+    border-bottom: 1px solid #eee;
+}
