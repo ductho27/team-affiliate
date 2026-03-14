@@ -10,10 +10,13 @@ async function handleLogin() {
             localStorage.setItem('staffId', staffId);
             location.reload();
         } else { alert("Mã không đúng!"); }
-    } catch (err) { console.error(err); }
+    } catch (err) { console.error("Lỗi login:", err); }
 }
 
-function handleLogout() { localStorage.clear(); location.reload(); }
+function handleLogout() { 
+    localStorage.clear(); 
+    location.reload(); 
+}
 
 // --- 2. TẠO LINK VÀ % NGẪU NHIÊN ---
 function generateLink() {
@@ -31,7 +34,7 @@ function generateLink() {
     resultBox.style.display = "block";
 }
 
-// --- 3. THẦY THỌ BÓI VUI (HÀM ĐANG BỊ LỖI ĐÂY) ---
+// --- 3. THẦY THỌ BÓI VUI (DÙNG GOOGLE GEMINI) ---
 async function askMasterTho() {
     const question = document.getElementById('fortuneQuestion').value.trim();
     const resultDiv = document.getElementById('fortune-result');
@@ -42,10 +45,8 @@ async function askMasterTho() {
     resultDiv.style.display = 'none';
     loading.style.display = 'block';
 
-    // Dán API Key Gemini của Thọ vào đây
+    // THỌ DÁN KEY GOOGLE GEMINI VÀO ĐÂY NHÉ
     const API_KEY = "AIzaSyAIOz-0PxZcUqwzx9VROA1Hfcn95bjRH28"; 
-    
-    // URL của Gemini API
     const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${API_KEY}`;
 
     try {
@@ -55,38 +56,36 @@ async function askMasterTho() {
             body: JSON.stringify({
                 contents: [{
                     parts: [{
-                        text: `Bạn là 'Thầy Thọ', một thầy bói vui tính tại Việt Nam. 
-                               Nhiệm vụ: Trả lời câu hỏi bói toán hài hước, dùng từ ngữ dân gian, 
-                               sau đó luôn khuyên họ mua sắm trên Shopee để giải hạn. 
-                               Câu hỏi là: ${question}`
+                        text: `Bạn là 'Thầy Thọ', một thầy bói vui tính. Trả lời hài hước bằng tiếng Việt về câu hỏi: ${question}. Cuối câu hãy khuyên họ mua Shopee giải hạn.`
                     }]
                 }]
             })
         });
 
         const data = await response.json();
-        
-        if (data.error) {
-            throw new Error(data.error.message);
-        }
-
-        const answer = data.candidates[0].content.parts[0].text;
         loading.style.display = 'none';
-        resultDiv.innerText = "🔮 Thầy Thọ phán: " + answer;
-        resultDiv.style.display = 'block';
+
+        if (data.candidates && data.candidates[0].content.parts[0].text) {
+            const answer = data.candidates[0].content.parts[0].text;
+            resultDiv.innerText = "🔮 Thầy Thọ phán: " + answer;
+            resultDiv.style.display = 'block';
+        } else {
+            alert("Thầy Thọ đang suy ngẫm, Thọ thử lại nhé!");
+        }
 
     } catch (error) {
         loading.style.display = 'none';
-        alert("Thầy Thọ đang bận xem quẻ khác, Thọ kiểm tra lại Key nhé!");
+        alert("Thầy Thọ đang đi vắng, Thọ kiểm tra mạng hoặc Key nhé!");
         console.error("Lỗi Gemini:", error);
     }
 }
 
 // Kiểm tra khi load trang
 window.onload = () => {
-    if (localStorage.getItem('userName')) {
+    const savedName = localStorage.getItem('userName');
+    if (savedName) {
         document.getElementById('login-screen').style.display = 'none';
         document.getElementById('main-content').style.display = 'block';
-        document.getElementById('welcome-msg').innerText = `Chào bạn, ${localStorage.getItem('userName')}! 👋`;
+        document.getElementById('welcome-msg').innerText = `Chào bạn, ${savedName}! 👋`;
     }
 }
