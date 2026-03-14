@@ -371,3 +371,25 @@ hr {
         transform: scale(1.03);
     }
 }
+
+/* Làm đẹp cho các thẻ link hướng dẫn */
+a[target="_blank"] {
+    display: inline-block;
+    margin: 5px 0;
+    padding: 8px 15px;
+    background-color: #f3f0ff; /* Màu tím cực nhạt */
+    color: var(--purple-tho); /* Dùng màu tím thương hiệu của Thọ */
+    text-decoration: none; /* Bỏ gạch chân xấu xí */
+    border-radius: 10px; /* Bo góc mượt mà */
+    font-weight: 500;
+    transition: all 0.3s ease;
+    border: 1px solid #e0d5ff;
+}
+
+/* Hiệu ứng khi di chuột vào link */
+a[target="_blank"]:hover {
+    background-color: var(--purple-tho);
+    color: white;
+    transform: translateX(5px); /* Hơi nhích sang phải một chút cho sinh động */
+    box-shadow: 0 4px 10px rgba(163, 108, 243, 0.2);
+}
