@@ -46,7 +46,7 @@ async function askMasterTho() {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
-                'Authorization': `Bearer SK-CỦA-BẠN-DÁN-VÀO-ĐÂY` // NHỚ THAY KEY ALL PERMISSIONS NHÉ
+                'Authorization': `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` // NHỚ THAY KEY ALL PERMISSIONS NHÉ
             },
             body: JSON.stringify({
                 model: "gpt-3.5-turbo",
