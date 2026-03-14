@@ -284,3 +284,48 @@ hr {
   0% { transform: translateX(0); }
   100% { transform: translateX(300px); }
 }
+
+/* Nút Mua Ngay */
+.buy-now-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin: 15px auto;
+    padding: 15px 30px;
+    background: #ff4757; /* Màu đỏ nổi bật */
+    color: white !important;
+    text-decoration: none;
+    border-radius: 50px;
+    font-weight: bold;
+    font-size: 1.1rem;
+    width: fit-content;
+    animation: blink-red 1s infinite, shake 2s infinite; /* Kích hoạt 2 hiệu ứng */
+    transition: 0.3s;
+}
+
+.buy-now-btn .sticker {
+    font-size: 1.3rem;
+}
+
+/* Hiệu ứng nhấp nháy màu đỏ */
+@keyframes blink-red {
+    0% { background: #ff4757; box-shadow: 0 0 10px rgba(255, 71, 87, 0.7); }
+    50% { background: #ff1f1f; box-shadow: 0 0 20px rgba(255, 31, 31, 0.9); }
+    100% { background: #ff4757; box-shadow: 0 0 10px rgba(255, 71, 87, 0.7); }
+}
+
+/* Hiệu ứng rung nhẹ liên tục */
+@keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    25% { transform: translateX(-2px); }
+    50% { transform: translateX(2px); }
+    75% { transform: translateX(-2px); }
+}
+
+/* Hiệu ứng khi rê chuột vào */
+.buy-now-btn:hover {
+    animation: none; /* Dừng nhấp nháy để xoay */
+    transform: rotate(360deg) scale(1.1);
+    transition: 0.5s;
+}
