@@ -126,30 +126,61 @@ button:disabled {
     filter: grayscale(0.5);
 }
 /* Nút Zalo liên hệ */
-.zalo-btn {
+/* Container chứa biểu tượng và chữ */
+.zalo-container {
     display: flex;
+    flex-direction: column; /* Chữ nằm dưới biểu tượng cho đẹp */
     align-items: center;
     justify-content: center;
-    gap: 10px;
-    margin: 15px auto 0;
-    padding: 12px;
-    background: #0084ff; /* Màu xanh Zalo */
-    color: white !important;
     text-decoration: none;
-    border-radius: 50px;
-    font-weight: bold;
-    width: fit-content;
-    min-width: 200px;
+    margin-top: 20px;
     transition: 0.3s;
 }
 
-.zalo-btn img {
-    width: 25px;
-    height: 25px;
+/* Hiệu ứng nhịp đập cho biểu tượng */
+.zalo-icon-wrapper {
+    width: 60px;
+    height: 60px;
+    background: #0084ff;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 0 0 0 rgba(0, 132, 255, 0.7);
+    animation: pulse-blue 2s infinite; /* Kích hoạt hiệu ứng đập */
 }
 
-.zalo-btn:hover {
-    background: #006edb;
-    transform: scale(1.05);
-    box-shadow: 0 5px 15px rgba(0,132,255,0.3);
+.zalo-icon-wrapper img {
+    width: 35px;
+    height: 35px;
+}
+
+.zalo-text {
+    margin-top: 8px;
+    color: #0084ff;
+    font-weight: bold;
+    font-size: 14px;
+}
+
+/* Định nghĩa hiệu ứng nhịp đập và tỏa hào quang */
+@keyframes pulse-blue {
+    0% {
+        transform: scale(0.95);
+        box-shadow: 0 0 0 0 rgba(0, 132, 255, 0.7);
+    }
+    70% {
+        transform: scale(1);
+        box-shadow: 0 0 0 15px rgba(0, 132, 255, 0);
+    }
+    100% {
+        transform: scale(0.95);
+        box-shadow: 0 0 0 0 rgba(0, 132, 255, 0);
+    }
+}
+
+/* Hiệu ứng khi rê chuột vào cả cụm */
+.zalo-container:hover .zalo-icon-wrapper {
+    animation: none; /* Dừng đập để xoay */
+    transform: rotate(360deg) scale(1.1);
+    transition: 0.5s;
 }
