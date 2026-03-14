@@ -303,37 +303,3 @@ button:disabled {
     50% { opacity: 0.7; }
     100% { opacity: 1; }
 }
-/* Container để điều chỉnh vị trí các ngọn lửa */
-.magic-input-container {
-    position: relative;
-    width: 100%;
-    margin-bottom: 15px;
-}
-
-/* Lớp ngọn lửa ma mị (ẩn ban đầu, vị trí phía sau) */
-.fire-ghastly {
-    position: absolute;
-    bottom: -15px; /* Điều chỉnh để lửa mọc lên từ đáy ô */
-    left: 10%;
-    width: 80%; /* Rộng bằng ô nhập liệu */
-    height: 30px; /* Chiều cao ban đầu nhỏ xíu */
-    background: radial-gradient(circle, #ff4757, #a36cf3, transparent); /* Màu lửa tím hồng */
-    border-radius: 100px / 150px; /* Hình dáng ngọn lửa */
-    filter: blur(15px) opacity(0); /* Hiệu ứng mờ ma mị và ẩn đi */
-    transition: all 0.4s ease-out; /* Chuyển động lửa mượt mà */
-    z-index: -1; /* Đặt sau ô nhập liệu */
-}
-
-/* Hiệu ứng lung linh của ngọn lửa */
-@keyframes flutter {
-    0% { transform: scale(1) translateY(0) rotate(0); filter: blur(15px); }
-    30% { transform: scale(1.05) translateY(-2px) rotate(1deg); filter: blur(17px); }
-    60% { transform: scale(0.98) translateY(1px) rotate(-1deg); filter: blur(14px); }
-    100% { transform: scale(1) translateY(0) rotate(0); filter: blur(15px); }
-}
-
-/* Khi có lửa cháy (được kích hoạt bằng JS) */
-.fire-active {
-    filter: blur(15px) opacity(0.8); /* Hiện lửa ma mị lên */
-    animation: flutter 2s infinite ease-in-out; /* Cho lửa lung linh */
-}
