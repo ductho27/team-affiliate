@@ -5,89 +5,195 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My Team & Affiliate</title>
     <style>
-        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: #f4f7f6; margin: 0; padding: 20px; text-align: center; }
-        .container { max-width: 600px; margin: auto; background: white; padding: 20px; border-radius: 15px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); }
-        
-        /* Phần hình ảnh nhân viên */
-        .team-section { display: flex; overflow-x: auto; gap: 15px; padding: 10px; margin-bottom: 30px; }
-        .member-card { min-width: 120px; }
-        .member-card img { width: 80px; height: 80px; border-radius: 50%; object-fit: cover; border: 2px solid #0056b3; }
-        .member-card p { font-size: 14px; margin-top: 5px; color: #333; }
+        :root {
+            --primary-color: #0056b3;
+            --success-color: #28a745;
+            --bg-color: #f4f7f6;
+        }
 
-        /* Phần Affiliate */
-        .converter-box { background: #e9ecef; padding: 15px; border-radius: 10px; margin-bottom: 20px; }
-        input { width: 80%; padding: 10px; border: 1px solid #ddd; border-radius: 5px; margin-bottom: 10px; }
-        button { background: #28a745; color: white; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer; }
-        button:hover { background: #218838; }
+        body { 
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; 
+            background-color: var(--bg-color); 
+            margin: 0; 
+            padding: 10px; /* Giảm padding trên mobile */
+            color: #333;
+        }
 
-        .aff-links a { display: block; background: #0056b3; color: white; text-decoration: none; padding: 15px; margin: 10px 0; border-radius: 8px; transition: 0.3s; }
-        .aff-links a:hover { background: #004494; transform: scale(1.02); }
+        .container { 
+            max-width: 600px; 
+            margin: 20px auto; 
+            background: white; 
+            padding: 25px; 
+            border-radius: 20px; 
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08); 
+        }
+
+        h2 { color: var(--primary-color); font-size: 1.5rem; }
+        h4 { margin-bottom: 15px; color: #555; }
+
+        /* Team Section - Tối ưu cuộn ngang mượt hơn trên Mobile */
+        .team-section { 
+            display: flex; 
+            justify-content: center; /* Căn giữa nhân viên */
+            gap: 20px; 
+            padding: 10px 0; 
+            margin-bottom: 20px;
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+        }
+
+        .member-card { 
+            min-width: 100px; 
+            transition: transform 0.3s;
+        }
+
+        .member-card:hover { transform: translateY(-5px); }
+
+        .member-card img { 
+            width: 70px; 
+            height: 70px; 
+            border-radius: 50%; 
+            object-fit: cover; 
+            border: 3px solid #eef2f7;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+
+        .member-card p { font-size: 13px; font-weight: 600; margin-top: 8px; }
+
+        /* Converter Box - Giao diện hiện đại */
+        .converter-box { 
+            background: #f8f9fa; 
+            padding: 20px; 
+            border-radius: 15px; 
+            margin-bottom: 25px;
+            border: 1px solid #eee;
+        }
+
+        input { 
+            width: 100%; /* Full rộng trên mobile */
+            box-sizing: border-box;
+            padding: 12px 15px; 
+            border: 2px solid #ddd; 
+            border-radius: 10px; 
+            margin-bottom: 15px; 
+            font-size: 16px; /* Tránh iOS tự động zoom khi focus */
+            transition: border-color 0.3s;
+        }
+
+        input:focus { border-color: var(--primary-color); outline: none; }
+
+        button { 
+            width: 100%; /* Nút to dễ bấm trên điện thoại */
+            background: var(--success-color); 
+            color: white; 
+            border: none; 
+            padding: 14px; 
+            border-radius: 10px; 
+            cursor: pointer; 
+            font-size: 16px;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        button:active { transform: scale(0.98); }
+
+        #result { 
+            margin-top: 15px; 
+            word-break: break-all; /* Tránh link dài làm tràn màn hình */
+            line-height: 1.5;
+        }
+
+        /* Danh sách sản phẩm - Dạng thẻ */
+        .aff-links h4 { text-align: left; padding-left: 5px; }
+
+        .aff-links a { 
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: white; 
+            color: var(--primary-color); 
+            text-decoration: none; 
+            padding: 15px; 
+            margin: 12px 0; 
+            border-radius: 12px; 
+            border: 1px solid #e0e6ed;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+
+        .aff-links a:hover { 
+            background: var(--primary-color); 
+            color: white;
+            box-shadow: 0 5px 15px rgba(0,86,179,0.2);
+        }
+
+        /* Media Query cho màn hình cực nhỏ */
+        @media (max-width: 400px) {
+            .container { padding: 15px; }
+            h2 { font-size: 1.2rem; }
+            .member-card img { width: 60px; height: 60px; }
+        }
     </style>
 </head>
 <body>
 
 <div class="container">
-    <h2>Chào mừng bạn đến với Team của Thọ!</h2>
+    <h2>Team Đức Thọ & Affiliate</h2>
     
     <div class="team-section">
         <div class="member-card">
-            <img src="images.jpg" alt="Nhân viên 1">
+            <img src="images.jpg" alt="Duc Tho">
             <p>Duc Tho</p>
         </div>
         <div class="member-card">
-            <img src="admin2.jpg" alt="Nhân viên 2">
+            <img src="admin2.jpg" alt="Bảnh Bỏn">
             <p>Bảnh Bỏn</p>
         </div>
-        </div>
-
-    <hr>
+    </div>
 
     <div class="converter-box">
         <h4>Chuyển đổi Link Mua Hàng</h4>
-        <input type="text" id="rawLink" placeholder="Dán link sản phẩm vào đây...">
-        <br>
+        <input type="text" id="rawLink" placeholder="Dán link sản phẩm Shopee...">
         <button onclick="convertLink()">Lấy Link Affiliate</button>
-        <p id="result" style="margin-top: 10px; font-weight: bold; color: #d9534f;"></p>
+        <p id="result" style="color: #d9534f;"></p>
     </div>
 
     <div class="aff-links">
         <h4>Sản phẩm khuyên dùng</h4>
-        <a href="https://shope.ee/your-id-1" target="_blank">🛒 Máy tính X99 Cấu Hình Khủng</a>
-        <a href="https://shope.ee/your-id-2" target="_blank">🎧 Tai nghe Kiểm âm DJ</a>
-        <a href="https://shope.ee/your-id-3" target="_blank">📦 Phụ kiện iPad Mini 7</a>
+        <a href="#" target="_blank">🛒 Máy tính X99 Cấu Hình Khủng</a>
+        <a href="#" target="_blank">🎧 Tai nghe Kiểm âm DJ</a>
+        <a href="#" target="_blank">📦 Phụ kiện iPad Mini 7</a>
     </div>
 </div>
 
 <script>
-// Đoạn JavaScript trong index.html
-async function convertLink() {
-    const userLink = document.getElementById('rawLink').value;
-    const resDiv = document.getElementById('result');
-    
-    // Dán link Ngrok từ Bước 4 vào đây
-    const myApiUrl = "https://5a6b-2001-ee0-4141-611d-6406-3e56-ace5-639a.ngrok-free.app/convert"; 
+    // Giữ nguyên logic JavaScript cũ của Thọ
+    async function convertLink() {
+        const userLink = document.getElementById('rawLink').value;
+        const resDiv = document.getElementById('result');
+        const myApiUrl = "https://5a6b-2001-ee0-4141-611d-6406-3e56-ace5-639a.ngrok-free.app/convert"; 
 
-    resDiv.innerText = "Hệ thống đang điều khiển Edge để lấy link...";
+        if(!userLink) {
+            resDiv.innerText = "Vui lòng dán link trước!";
+            return;
+        }
 
-    try {
-        const response = await fetch(myApiUrl, {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ link: userLink })
-        });
-        const data = await response.json();
-        resDiv.innerHTML = `Link của bạn: <a href="${data.affiliate_link}" target="_blank">Bấm vào đây</a>`;
-    } catch (err) {
-        resDiv.innerText = "Lỗi: Đảm bảo Thọ đã đóng Edge và đang chạy script Python!";
+        resDiv.style.color = "#0056b3";
+        resDiv.innerText = "Đang điều khiển Bot... chờ xíu nhé!";
+
+        try {
+            const response = await fetch(myApiUrl, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ link: userLink })
+            });
+            const data = await response.json();
+            resDiv.innerHTML = `Xong rồi! <a href="${data.affiliate_link}" target="_blank" style="color: #28a745; text-decoration: underline;">Bấm để mở Link</a>`;
+        } catch (err) {
+            resDiv.style.color = "#d9534f";
+            resDiv.innerText = "Lỗi kết nối! Thọ kiểm tra lại Ngrok nhé.";
+        }
     }
-}
 </script>
-
 </body>
-
 </html>
-
-
-
-
-
