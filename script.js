@@ -41,40 +41,26 @@ function generateLink() {
     const userLink = document.getElementById('rawLink').value.trim();
     const resultBox = document.getElementById('result-box');
     const finalLink = document.getElementById('finalLink');
-    const cashDisplay = document.getElementById('cash-amount'); // Thêm dòng này
+    const percentDisplay = document.getElementById('percent-amount'); // Chỗ hiển thị %
     const staffId = localStorage.getItem('staffId') || "THO_ADMIN";
 
     if(!userLink.includes('shopee.vn') && !userLink.includes('shope.ee')) {
-        alert("Thọ ơi, dán đúng link Shopee mới được nhé!");
+        alert("Thọ ơi, dán đúng link Shopee mới chuẩn nhé!");
         return;
     }
 
-    // --- LOGIC TỈ LỆ NGẪU NHIÊN ---
-    const rand = Math.random() * 100; // Tạo số ngẫu nhiên từ 0 đến 100
-    let refundAmount = "15.000"; // Mặc định là 15k
+    // --- LOGIC TỶ LỆ % NGẪU NHIÊN (Từ 2% đến 4.5%) ---
+    // Tạo số ngẫu nhiên có 1 chữ số thập phân trong khoảng [2.0, 4.5]
+    const randomPercent = (Math.random() * (4.5 - 2.0) + 2.0).toFixed(1);
 
-    if (rand <= 1) {
-        refundAmount = "20.000"; // 1% tỉ lệ ra 20k
-    } else if (rand <= 3) {
-        refundAmount = "19.000"; // 2% tiếp theo ra 19k (1 + 2 = 3)
-    } else if (rand <= 8) {
-        refundAmount = "18.000"; // 5% tiếp theo ra 18k (3 + 5 = 8)
-    } else if (rand <= 18) {
-        refundAmount = "17.000"; // 10% tiếp theo ra 17k (8 + 10 = 18)
-    } else if (rand <= 38) {
-        refundAmount = "16.000"; // 20% tiếp theo ra 16k (18 + 20 = 38)
-    } else {
-        refundAmount = "15.000"; // Còn lại (~62%) là 15k
+    // Hiển thị tỷ lệ phần trăm đã quay trúng
+    if (percentDisplay) {
+        percentDisplay.innerText = randomPercent + "%";
     }
 
-    // Hiển thị số tiền đã quay trúng
-    if (cashDisplay) {
-        cashDisplay.innerText = refundAmount + "đ";
-    }
-
-    // Gắn link
+    // Gắn link kèm mã nhân viên
     let separator = userLink.includes('?') ? '&' : '?';
-    const affLink = `${userLink}${separator}utm_content=${staffId}&utm_source=LuckyRefund`;
+    const affLink = `${userLink}${separator}utm_content=${staffId}&utm_source=LuckyPercent`;
 
     finalLink.href = affLink;
     resultBox.style.display = "block";
