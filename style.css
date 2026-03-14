@@ -105,3 +105,24 @@ button:hover { opacity: 0.9; }
     text-decoration: none; padding: 15px; margin: 12px 0; 
     border-radius: 12px; border: 1px solid #e0e6ed; font-weight: 600;
 }
+
+/* Hiệu ứng rung rinh cho nút bấm */
+@keyframes shake {
+  0% { transform: translateX(0); }
+  25% { transform: translateX(-3px) rotate(-1deg); }
+  50% { transform: translateX(3px) rotate(1deg); }
+  75% { transform: translateX(-3px) rotate(-1deg); }
+  100% { transform: translateX(0); }
+}
+
+/* Khi di chuột vào nút sẽ hơi rung nhẹ */
+button:hover {
+    animation: shake 0.5s infinite;
+}
+
+/* Hiệu ứng đặc biệt khi nút đang bận (đang chạy bot) */
+button:disabled {
+    animation: none;
+    opacity: 0.7;
+    filter: grayscale(0.5);
+}
