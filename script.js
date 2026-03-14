@@ -135,3 +135,32 @@ async function askMasterTho() {
         resDiv.innerText = "🚫 Thầy đang đi vắng (Check Ngrok)!"; 
     }
 }
+function updateFireSize() {
+    const question = document.getElementById('fortuneQuestion').value.trim();
+    const fire = document.getElementById('ghastlyFire');
+    
+    if (question.length === 0) {
+        // Không có chữ thì tắt lửa
+        fire.classList.remove('fire-active');
+        fire.style.height = "30px";
+        return;
+    }
+
+    // Nếu có chữ, kích hoạt lửa cháy mờ ảo
+    fire.classList.add('fire-active');
+
+    // Công thức tính lửa: càng nhiều chữ lửa càng cao
+    // Ví dụ: tối thiểu 30px, tối đa khoảng 150px
+    let baseHeight = 30; // Chiều cao lửa ban đầu nhỏ
+    let heightFromText = Math.min(question.length * 1.5, 120); // Tăng 1.5px cho mỗi ký tự
+    let newHeight = baseHeight + heightFromText;
+
+    fire.style.height = `${newHeight}px`; // Cập nhật chiều cao lửa thực tế
+    
+    // Càng nhiều chữ lửa càng đỏ hơn cho kịch tính
+    if (newHeight > 100) {
+        fire.style.background = radial-gradient(circle, #ff1f1f, #a36cf3, transparent);
+    } else {
+        fire.style.background = radial-gradient(circle, #ff4757, #a36cf3, transparent);
+    }
+}
