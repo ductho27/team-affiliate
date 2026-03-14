@@ -404,21 +404,21 @@ a[target="_blank"]:hover {
 }
 
 .shopee-banner-container {
-    width: 100%;
-    margin-bottom: 25px;
+    width: 90%; /* Không để tràn 100% để tạo khoảng thở hai bên */
+    max-width: 600px; /* Giới hạn chiều rộng tối đa */
+    margin: 20px auto; /* auto ở hai bên giúp căn giữa tuyệt đối */
+    display: flex;
+    justify-content: center;
 }
 
 .shopee-banner {
+    width: 100%;
     display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background: linear-gradient(135deg, #a36cf3 0%, #ff4d2d 100%); /* Tím pha Cam Shopee cho rực rỡ */
-    color: white;
-    text-decoration: none;
-    padding: 20px;
-    border-radius: 20px; /* Bo tròn cực mạnh */
-    box-shadow: 0 8px 20px rgba(163, 108, 243, 0.3);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    flex-direction: column; /* Chuyển sang dạng cột cho dễ nhìn trên mobile */
+    align-items: center; /* Căn giữa nội dung bên trong */
+    text-align: center;
+    padding: 25px; /* Tăng padding để banner thông thoáng hơn */
+    gap: 15px; /* Tạo khoảng cách giữa các hàng chữ */
 }
 
 .shopee-banner:hover {
@@ -450,9 +450,22 @@ a[target="_blank"]:hover {
 .banner-action {
     background: white;
     color: #ff4d2d;
-    padding: 10px 20px;
+    padding: 10px 30px; /* Tăng chiều ngang nút */
     border-radius: 50px;
     font-weight: bold;
-    font-size: 0.9rem;
-    white-space: nowrap;
+    font-size: 1rem;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    display: inline-block;
+}
+
+.shopee-banner {
+    background: linear-gradient(-45deg, #a36cf3, #ff4d2d, #f36cda, #ff9a2d);
+    background-size: 400% 400%;
+    animation: gradientBG 10s ease infinite; /* Hiệu ứng đổi màu từ từ */
+}
+
+@keyframes gradientBG {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
 }
