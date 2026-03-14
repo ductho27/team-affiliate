@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hệ Thống Mua Sắm - Team Thọ</title>
+    <title>Team Đức Thọ - Affiliate System</title>
 
     <script type="text/javascript">
         var _atsmarttag = { pub_id: '5318594335759026755' };
@@ -18,126 +18,169 @@
 
     <style>
         :root {
+            --primary: #0056b3;
             --shopee-orange: #ee4d2d;
-            --shopee-light: #ff5722;
-            --bg-gradient: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            --success: #28a745;
+            --bg: #f0f2f5;
         }
 
         body { 
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
-            background: var(--bg-gradient);
-            min-height: 100vh;
-            margin: 0; padding: 20px;
+            font-family: 'Segoe UI', Arial, sans-serif; 
+            background: var(--bg); margin: 0; padding: 15px;
             display: flex; justify-content: center;
         }
 
         .container { 
-            max-width: 500px; width: 100%;
-            background: white; padding: 30px; 
-            border-radius: 25px; 
-            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
-            text-align: center;
+            max-width: 500px; width: 100%; background: white; 
+            padding: 30px; border-radius: 25px; 
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
         }
 
-        h2 { color: var(--shopee-orange); margin-bottom: 5px; }
-        .subtitle { color: #666; font-size: 0.9rem; margin-bottom: 25px; }
+        h2 { color: var(--shopee-orange); text-align: center; margin-bottom: 20px; }
+        
+        /* Màn hình đăng nhập */
+        .login-box { padding: 10px 0; text-align: center; }
+        
+        /* Nội dung chính */
+        #main-content { display: none; }
 
         .converter-box { 
             background: #fff5f1; padding: 20px; 
             border-radius: 20px; border: 2px dashed var(--shopee-orange);
-            margin-bottom: 20px;
+            margin: 20px 0;
         }
 
         input { 
-            width: 100%; box-sizing: border-box;
-            padding: 15px; border: 1px solid #ddd; 
-            border-radius: 12px; margin-bottom: 15px; 
-            font-size: 15px; outline: none;
+            width: 100%; box-sizing: border-box; padding: 14px; 
+            border: 1px solid #ddd; border-radius: 12px; 
+            margin-bottom: 15px; font-size: 16px; outline: none;
         }
 
-        input:focus { border-color: var(--shopee-orange); box-shadow: 0 0 8px rgba(238, 77, 45, 0.2); }
-
-        .btn-convert { 
-            width: 100%; background: var(--shopee-orange); 
-            color: white; border: none; padding: 16px; 
+        .btn { 
+            width: 100%; border: none; padding: 16px; 
             border-radius: 12px; cursor: pointer; 
-            font-size: 17px; font-weight: bold;
-            box-shadow: 0 4px 15px rgba(238, 77, 45, 0.3);
-            transition: all 0.3s ease;
+            font-size: 16px; font-weight: bold; transition: 0.3s;
         }
 
-        .btn-convert:hover { background: var(--shopee-light); transform: translateY(-2px); }
+        .btn-login { background: var(--primary); color: white; }
+        .btn-convert { background: var(--shopee-orange); color: white; box-shadow: 0 4px 12px rgba(238, 77, 45, 0.2); }
+        .btn-logout { background: #6c757d; color: white; margin-top: 20px; padding: 10px; font-size: 14px; }
 
+        /* Kết quả link */
         #result-box {
             display: none; margin-top: 25px; padding: 20px;
-            background: #e8f5e9; border-radius: 15px;
-            animation: fadeIn 0.5s ease;
+            background: #e8f5e9; border-radius: 15px; text-align: center;
         }
-
-        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
-
-        .cta-text { color: #2e7d32; font-weight: bold; font-size: 1.1rem; margin-bottom: 10px; }
 
         .buy-now-btn {
-            display: inline-block; width: 100%;
-            background: #28a745; color: white;
-            text-decoration: none; padding: 15px;
+            display: inline-block; width: 100%; box-sizing: border-box;
+            background: var(--success); color: white;
+            text-decoration: none; padding: 16px;
             border-radius: 12px; font-weight: bold;
-            font-size: 1.2rem; margin-top: 10px;
-            box-shadow: 0 4px 12px rgba(40, 167, 69, 0.3);
+            font-size: 1.1rem; margin-top: 10px;
+            box-shadow: 0 4px 12px rgba(40, 167, 69, 0.2);
         }
 
-        .buy-now-btn:blink { animation: blinker 1.5s linear infinite; }
-        @keyframes blinker { 50% { opacity: 0.8; } }
-
-        .footer-note { font-size: 0.8rem; color: #999; margin-top: 20px; }
+        .welcome-user { font-weight: bold; color: #333; margin-bottom: 15px; display: block; }
     </style>
 </head>
 <body>
 
 <div class="container">
-    <h2>🛍️ Shopping Team Thọ</h2>
-    <p class="subtitle">Dán link Shopee để ủng hộ hoa hồng cho Team nhé!</p>
-
-    <div class="converter-box">
-        <input type="text" id="rawLink" placeholder="Dán link sản phẩm Shopee tại đây...">
-        <button class="btn-convert" onclick="generateLink()">TẠO LINK MUA HÀNG</button>
+    <div id="login-screen" class="login-box">
+        <h2>🔐 Đăng Nhập Hệ Thống</h2>
+        <p style="color: #666; margin-bottom: 20px;">Vui lòng nhập mã nhân viên của bạn</p>
+        <input type="text" id="staffIdInput" placeholder="Nhập mã nhân viên (VD: V001)...">
+        <button class="btn btn-login" onclick="handleLogin()">VÀO HỆ THỐNG</button>
+        <p id="login-msg" style="color: red; margin-top: 10px; font-weight: bold;"></p>
     </div>
 
-    <div id="result-box">
-        <div class="cta-text">🎉 Đã tạo link thành công!</div>
-        <p style="font-size: 0.9rem; color: #444;">Bạn hãy ấn vào nút bên dưới để bắt đầu mua sắm và ủng hộ hoa hồng cho mình nhé:</p>
-        
-        <a href="#" id="finalLink" target="_blank" class="buy-now-btn">
-             🚀 ẤN VÀO MUA NGAY 🛒
-        </a>
-        
-        <p style="margin-top: 15px; font-size: 0.8rem; color: #666;">(Sau khi ấn, hệ thống sẽ tự chuyển hướng đến Shopee)</p>
-    </div>
+    <div id="main-content">
+        <h2>🛍️ Team Thọ Affiliate</h2>
+        <span id="welcome-msg" class="welcome-user"></span>
 
-    <p class="footer-note">Cảm ơn bạn đã đồng hành cùng Đức Thọ!</p>
+        <div class="converter-box">
+            <p style="font-weight: bold; margin-bottom: 10px;">Chuyển đổi Link Shopee:</p>
+            <input type="text" id="rawLink" placeholder="Dán link sản phẩm Shopee vào đây...">
+            <button class="btn btn-convert" onclick="generateLink()">TẠO LINK MUA HÀNG</button>
+        </div>
+
+        <div id="result-box">
+            <p style="color: #2e7d32; font-weight: bold; margin-bottom: 5px;">🎉 Thành công!</p>
+            <p style="font-size: 0.9rem; color: #444;">Gửi nút bên dưới cho khách hoặc bạn bè để nhận hoa hồng:</p>
+            
+            <a href="#" id="finalLink" target="_blank" class="buy-now-btn">
+                 🚀 ẤN VÀO MUA NGAY 🛒
+            </a>
+        </div>
+
+        <button class="btn btn-logout" onclick="handleLogout()">Đăng xuất tài khoản</button>
+    </div>
 </div>
 
 <script>
+    // --- QUẢN LÝ ĐĂNG NHẬP ---
+    async function handleLogin() {
+        const staffId = document.getElementById('staffIdInput').value.trim().toUpperCase();
+        const msg = document.getElementById('login-msg');
+
+        if (!staffId) {
+            msg.innerText = "⚠️ Chưa nhập mã Thọ ơi!";
+            return;
+        }
+
+        try {
+            // Fetch file từ GitHub của bạn
+            const response = await fetch('employees.json');
+            const userList = await response.json();
+
+            if (userList[staffId]) {
+                const userName = userList[staffId];
+                localStorage.setItem('userName', userName);
+                localStorage.setItem('staffId', staffId);
+                showMainContent(userName);
+            } else {
+                msg.innerText = "❌ Mã này không có trong danh sách!";
+            }
+        } catch (err) {
+            msg.innerText = "⚠️ Lỗi: Không thấy file employees.json!";
+        }
+    }
+
+    function showMainContent(name) {
+        document.getElementById('login-screen').style.display = 'none';
+        document.getElementById('main-content').style.display = 'block';
+        document.getElementById('welcome-msg').innerText = `Chào bạn, ${name}! 👋`;
+    }
+
+    function handleLogout() {
+        localStorage.clear();
+        location.reload();
+    }
+
+    window.onload = () => {
+        const savedName = localStorage.getItem('userName');
+        if (savedName) showMainContent(savedName);
+    }
+
+    // --- TẠO LINK GỬI BẠN BÈ ---
     function generateLink() {
         const userLink = document.getElementById('rawLink').value.trim();
         const resultBox = document.getElementById('result-box');
         const finalLink = document.getElementById('finalLink');
+        const staffId = localStorage.getItem('staffId') || "THO_TEAM";
 
-        if(!userLink || !userLink.includes('shopee.vn') && !userLink.includes('shope.ee')) {
-            alert("Thọ ơi, dán đúng link Shopee mới được nhé!");
+        if(!userLink.includes('shopee.vn') && !userLink.includes('shope.ee')) {
+            alert("Dán link Shopee mới chuẩn Thọ nhé!");
             return;
         }
 
-        // Gắn thêm utm_source để Thọ dễ theo dõi trên AccessTrade
-        const cleanLink = userLink.split('?')[0]; // Lấy link sạch
-        const affLink = `${cleanLink}?utm_source=ban_be_ung_ho`;
+        // Gắn staffId vào SubID (utm_content) để AccessTrade ghi nhận cho đúng người
+        let separator = userLink.includes('?') ? '&' : '?';
+        const affLink = `${userLink}${separator}utm_content=${staffId}&utm_source=ThoAffiliate`;
 
         finalLink.href = affLink;
         resultBox.style.display = "block";
-        
-        // Cuộn xuống kết quả
-        resultBox.scrollIntoView({ behavior: 'smooth' });
     }
 </script>
 
