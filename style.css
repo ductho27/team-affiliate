@@ -803,3 +803,47 @@ body {
     margin: 0;
     padding: 0;
 }
+
+/* Khung chứa các ngôi sao */
+#starfield {
+    position: fixed; /* Cố định trên toàn màn hình */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -2; /* Nằm dưới cùng, dưới cả nội dung và hiệu ứng sao băng cũ */
+    overflow: hidden; /* Không hiện thanh cuộn nếu sao ra ngoài */
+    background-color: #000; /* Nền đen để làm nổi bật sao vàng (tùy chọn) */
+}
+
+/* Định nghĩa một ngôi sao cơ bản */
+.star {
+    position: absolute;
+    background-color: #ffeb3b; /* Màu vàng xinh xắn (Material Yellow) */
+    border-radius: 50%; /* Làm cho sao tròn */
+    /* Hiệu ứng tỏa sáng nhẹ ban đầu */
+    box-shadow: 0 0 5px #fff176, 0 0 10px #fff176; 
+    
+    /* Gán hiệu ứng nhấp nháy */
+    animation: twinkle linear infinite; 
+}
+
+/* Định nghĩa hiệu ứng nhấp nháy rực rỡ */
+@keyframes twinkle {
+    0% {
+        opacity: 0.2; /* Gần như biến mất */
+        transform: scale(0.8); /* Hơi thu nhỏ */
+        box-shadow: 0 0 2px #fff176; /* Tỏa sáng yếu */
+    }
+    50% {
+        opacity: 1; /* Hiện rõ hoàn toàn */
+        transform: scale(1.1); /* Hơi phóng to nhẹ */
+        /* Tỏa sáng rực rỡ */
+        box-shadow: 0 0 10px #ffeb3b, 0 0 20px #ffeb3b, 0 0 30px #fff176; 
+    }
+    100% {
+        opacity: 0.2; /* Quay lại trạng thái ẩn */
+        transform: scale(0.8);
+        box-shadow: 0 0 2px #fff176;
+    }
+}
