@@ -869,23 +869,20 @@ body {
 }
 
 /* Hiệu ứng bay từ trái qua phải và hơi lượn sóng */
-@keyframes ufo-fly {
-    0% {
-        left: -10%;
-        top: 20%;
-        opacity: 0;
-        transform: scale(0.5) rotate(0deg);
-    }
+/* Bay từ trái sang phải */
+@keyframes ufo-fly-right {
+    0% { left: -10%; transform: scale(0.5); opacity: 0; }
     10% { opacity: 1; }
-    50% {
-        top: 50%; /* Bay lượn xuống giữa màn hình */
-        transform: scale(1.2) rotate(15deg);
-    }
+    50% { transform: scale(1.2) translateY(20px); } /* Bay hơi lượn xuống cho sinh động */
     90% { opacity: 1; }
-    100% {
-        left: 110%;
-        top: 30%;
-        opacity: 0;
-        transform: scale(0.5) rotate(-15deg);
-    }
+    100% { left: 110%; transform: scale(0.5); opacity: 0; }
+}
+
+/* Bay từ phải sang trái */
+@keyframes ufo-fly-left {
+    0% { right: -10%; transform: scale(0.5) scaleX(-1); opacity: 0; }
+    10% { opacity: 1; }
+    50% { transform: scale(1.2) scaleX(-1) translateY(-20px); } /* Bay hơi lượn lên */
+    90% { opacity: 1; }
+    100% { right: 110%; transform: scale(0.5) scaleX(-1); opacity: 0; }
 }
