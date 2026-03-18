@@ -223,3 +223,51 @@ function scheduleUFO() {
 window.addEventListener('load', () => {
     scheduleUFO();
 });
+
+// Hàm tạo sao chổi rực cháy bay qua màn hình
+function launchComet() {
+    const space = document.getElementById('comet-space');
+    if (!space) return;
+
+    const comet = document.createElement('div');
+    comet.classList.add('comet');
+
+    // KÍCH THƯỚC "TO ĐÙNG" NGẪU NHIÊN: Chiều dài từ 100px đến 250px
+    const randomWidth = Math.floor(Math.random() * 150) + 100;
+    comet.style.width = randomWidth + 'px';
+    // Chiều cao tỷ lệ theo chiều dài
+    comet.style.height = (randomWidth / 3.75) + 'px'; 
+    comet.style.borderRadius = (randomWidth / 7.5) + 'px 0 0 ' + (randomWidth / 7.5) + 'px';
+
+    // VỊ TRÍ XUẤT HIỆN NGẪU NHIÊN theo chiều dọc (mép trên)
+    const randomTop = Math.floor(Math.random() * 30) - 10; // Từ -10% đến 20% màn hình
+    comet.style.top = randomTop + '%';
+
+    // TỐC ĐỘ BAY NGẪU NHIÊN từ 4s đến 8s (nhanh hơn UFO để tạo cảm giác xé gió)
+    const duration = Math.floor(Math.random() * 4) + 4;
+    // Gán hiệu ứng bay và thời gian
+    comet.style.animation = `comet-fly ${duration}s linear forwards`;
+
+    // Thêm sao chổi vào khung chứa
+    space.appendChild(comet);
+
+    // Xóa sao chổi sau khi bay xong để nhẹ trình duyệt
+    setTimeout(() => {
+        comet.remove();
+    }, duration * 1000);
+}
+
+// Thiết lập thời gian xuất hiện ngẫu nhiên (LÂU LÂU MỚI CÓ: khoảng 30s đến 1 phút lại có 1 quả)
+function scheduleComet() {
+    const randomDelay = Math.random() * 30000 + 30000; // 30s đến 60s
+    setTimeout(() => {
+        launchComet();
+        scheduleComet(); // Lặp lại lịch trình
+    }, randomDelay);
+}
+
+// Kích hoạt khi trang web sẵn sàng
+window.addEventListener('load', () => {
+    scheduleUFO(); // Giữ lại lịch trình UFO cũ
+    scheduleComet(); // Thêm lịch trình sao chổi mới
+});
