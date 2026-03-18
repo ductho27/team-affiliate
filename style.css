@@ -847,3 +847,45 @@ body {
         box-shadow: 0 0 2px #fff176;
     }
 }
+
+/* Khung chứa UFO */
+#ufo-space {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none; /* Để không vướng khi bạn click nút */
+    z-index: -1; /* Nằm trên lớp sao vàng nhưng dưới nội dung web */
+}
+
+/* Định nghĩa UFO bằng Emoji */
+.ufo {
+    position: absolute;
+    font-size: 30px; /* Độ lớn của đĩa bay */
+    filter: drop-shadow(0 0 10px #00ff00); /* Hiệu ứng ánh sáng xanh huyền bí */
+    opacity: 0;
+    user-select: none;
+}
+
+/* Hiệu ứng bay từ trái qua phải và hơi lượn sóng */
+@keyframes ufo-fly {
+    0% {
+        left: -10%;
+        top: 20%;
+        opacity: 0;
+        transform: scale(0.5) rotate(0deg);
+    }
+    10% { opacity: 1; }
+    50% {
+        top: 50%; /* Bay lượn xuống giữa màn hình */
+        transform: scale(1.2) rotate(15deg);
+    }
+    90% { opacity: 1; }
+    100% {
+        left: 110%;
+        top: 30%;
+        opacity: 0;
+        transform: scale(0.5) rotate(-15deg);
+    }
+}
