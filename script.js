@@ -149,3 +149,38 @@ async function askMasterTho() {
         resDiv.innerText = "🚫 Thầy đang đi vắng (Check Ngrok)!"; 
     }
 }
+
+// Chờ cho đến khi trang tải xong hoàn toàn
+window.addEventListener('load', function() {
+    createStars();
+});
+
+function createStars() {
+    const starfield = document.getElementById('starfield');
+    const numberOfStars = 150; // Số lượng ngôi sao bạn muốn (tăng lên nếu muốn rực rỡ hơn)
+
+    for (let i = 0; i < numberOfStars; i++) {
+        // Tạo một phần tử div mới cho mỗi ngôi sao
+        const star = document.createElement('div');
+        star.classList.add('star');
+
+        // Kích thước ngẫu nhiên (từ 1px đến 4px) cho xinh xắn
+        const size = Math.random() * 3 + 1; 
+        star.style.width = `${size}px`;
+        star.style.height = `${size}px`;
+
+        // Vị trí ngẫu nhiên trên toàn màn hình
+        star.style.top = `${Math.random() * 100}%`;
+        star.style.left = `${Math.random() * 100}%`;
+
+        // Thời gian nhấp nháy ngẫu nhiên (từ 2s đến 5s) để tạo sự tự nhiên
+        const duration = Math.random() * 3 + 2;
+        star.style.animationDuration = `${duration}s`;
+
+        // Độ trễ ngẫu nhiên để các sao không nhấp nháy cùng lúc
+        star.style.animationDelay = `${Math.random() * 5}s`;
+
+        // Thêm ngôi sao vào khung chứa
+        starfield.appendChild(star);
+    }
+}
