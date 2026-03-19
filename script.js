@@ -1,5 +1,5 @@
 // --- ĐỊA CHỈ NGROK ---
-const BASE_URL = "https://f9a0-2001-ee0-4141-611d-e48a-ec6c-798-cb54.ngrok-free.app.app"; 
+const BASE_URL = "https://f9a0-2001-ee0-4141-611d-e48a-ec6c-798-cb54.ngrok-free.app"; 
 
 // --- XỬ LÝ ĐĂNG NHẬP ---
 async function handleLogin() {
